@@ -3,6 +3,7 @@
 // Controllers
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MobilController;
+use App\Http\Controllers\PermohonanController;
 use App\Http\Controllers\Security\RolePermission;
 use App\Http\Controllers\Security\RoleController;
 use App\Http\Controllers\Security\PermissionController;
@@ -44,6 +45,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('mobil', MobilController::class);
 
     Route::resource('supir', SupirController::class);
+    Route::resource('permohonan', PermohonanController::class);
 
 
     // Users Module

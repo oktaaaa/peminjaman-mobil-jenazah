@@ -15,28 +15,36 @@
                     @endif
                     <div class="card-header d-flex justify-content-between">
                         <div class="header-title">
-                            <h4 class="card-title">Supir</h4>
+                            <h4 class="card-title">Formulir Permohonan</h4>
                         </div>
                     </div>
                     <div class="card-body">
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vulputate, ex ac venenatis mollis, diam nibh finibus leo</p>
-                        <form action="{{route('supir.store')}}" method="POST">
+                        <form action="{{route('permohonan.store')}}" method="POST">
                             @csrf
                             <div class="form-group">
-                                <label class="form-label" for="nik"> NIK </label>
-                                <input type="text" class="form-control" name="nik" placeholder="Masukkan NIK" value="{{old('nik')}}">
+                                <label class="form-label" for="nama_pemohon"> Nama Pemohon </label>
+                                <input type="text" class="form-control" name="nama_pemohon" placeholder="Masukkan NIK" value="{{old('nama_pemohon')}}">
                             </div>
                             <div class="form-group">
-                                <label class="form-label" for="nama">Nama</label>
-                                <input type="text" class="form-control" name="nama" placeholder="Masukkan Nama" value="{{old('nama')}}">
+                                <label class="form-label" for="nama_jenazah">Nama Jenazah</label>
+                                <input type="text" class="form-control" name="nama_jenazah" placeholder="Masukkan Nama" value="{{old('nama_jenazah')}}">
                             </div>
                             <div class="form-group">
-                                <label class="form-label" for="alamat">Alamat</label>
-                                <input type="text" class="form-control" name="alamat" placeholder="Masukkan alamat" value="{{old('alamat')}}">
+                                <label class="form-label" for="alamat_penjemputan">Alamat Penjemputan</label>
+                                <input type="text" class="form-control" name="alamat_penjemputan" placeholder="Masukkan alamat" value="{{old('alamat_penjemputan')}}">
                             </div>
                             <div class="form-group">
-                                <label class="form-label" for="tgl_lahir">Tanggal lahir</label>
-                                <input type="date" class="form-control" name="tgl_lahir" placeholder="Masukkan Tanggal Lahir" value="{{old('tgl_lahir')}}">
+                                <label class="form-label" for="alamat_tpu">Alamat TPU</label>
+                                <input type="text" class="form-control" name="alamat_tpu" placeholder="Masukkan alamat" value="{{old('alamat_tpu')}}">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="tanggal_penjemputan">Tanggal Penjemputan</label>
+                                <input type="date" class="form-control" name="tanggal_penjemputan" placeholder="Masukkan Tanggal Lahir" value="{{old('tanggal_penjemputan')}}">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="jam_penjemputan">Jam Penjemputan</label>
+                                <input type="time" class="form-control" name="jam_penjemputan" placeholder="Masukkan Tanggal Lahir" value="{{old('jam_penjemputan')}}">
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="no_hp">No Hp</label>
@@ -44,19 +52,8 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="form-label" for="jk">Jenis Kelamin</label>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="jk" value="Perempuan">
-                                    <label class="form-check-label" for="jk">
-                                        Perempuan
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="jk" value="Laki-Laki">
-                                    <label class="form-check-label" for="jk">
-                                        Laki-laki
-                                    </label>
-                                </div>
+                                <label class="form-label" for="catatan">Catatan</label>
+                                <input type="text" class="form-control" name="catatan" placeholder="Masukkan No Hp" value="{{old('catatan')}}">
                             </div>
 
                             <button type="submit" class="btn btn-primary">Submit</button>
