@@ -13,8 +13,8 @@
                               </svg>
                            </div>
                            <div class="progress-detail">
-                              <p  class="mb-2">Total Sales</p>
-                              <h4 class="counter" style="visibility: visible;">$560K</h4>
+                              <p  class="mb-2">Total Mobil</p>
+                              <h4 class="counter" style="visibility: visible;">{{count($mobil)}}</h4>
                            </div>
                         </div>
                      </div>
@@ -28,8 +28,8 @@
                               </svg>
                            </div>
                            <div class="progress-detail">
-                              <p  class="mb-2">Total Profit</p>
-                              <h4 class="counter">$185K</h4>
+                              <p  class="mb-2">Total Supir</p>
+                              <h4 class="counter">{{count($supir)}}</h4>
                            </div>
                         </div>
                      </div>
@@ -43,13 +43,13 @@
                               </svg>
                            </div>
                            <div class="progress-detail">
-                              <p  class="mb-2">Total Cost</p>
-                              <h4 class="counter">$375K</h4>
+                              <p  class="mb-2">Total Permohonan</p>
+                              <h4 class="counter">{{count($permohonan)}}</h4>
                            </div>
                         </div>
                      </div>
                   </li>
-                  <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="1000">
+                  {{-- <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="1000">
                      <div class="card-body">
                         <div class="progress-widget">
                            <div id="circle-progress-04" class="circle-progress-01 circle-progress circle-progress-info text-center" data-min-value="0" data-max-value="100" data-value="60" data-type="percent">
@@ -108,14 +108,14 @@
                            </div>
                         </div>
                      </div>
-                  </li>
+                  </li> --}}
                </ul>
                <div class="swiper-button swiper-button-next"></div>
                <div class="swiper-button swiper-button-prev"></div>
             </div>
          </div>
       </div>
-      <div class="col-md-12 col-lg-8">
+      {{-- <div class="col-md-12 col-lg-8">
          <div class="row">
             <div class="col-md-12">
                <div class="card" data-aos="fade-up" data-aos-delay="800">
@@ -564,6 +564,6 @@
                </div>
             </div>
          </div>
-      </div>
+      </div> --}}
    </div>
 </x-app-layout>

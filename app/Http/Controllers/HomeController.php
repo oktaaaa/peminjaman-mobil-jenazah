@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mobil;
+use App\Models\Permohonan;
+use App\Models\Supir;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -12,7 +15,10 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $assets = ['chart', 'animation'];
-        return view('dashboards.dashboard', compact('assets'));
+        $mobil = Mobil::all();
+        $supir = Supir::all();
+        $permohonan = Permohonan::all();
+        return view('dashboards.dashboard', compact('assets', 'mobil', 'supir', 'permohonan'));
     }
 
     /*

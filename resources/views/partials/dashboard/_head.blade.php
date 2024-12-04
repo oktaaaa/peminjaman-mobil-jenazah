@@ -1,7 +1,7 @@
 
 
 <!-- Favicon -->
-<link rel="shortcut icon" href="{{asset('images/favicon.ico')}}" />
+<link rel="shortcut icon" href="{{asset('images/logo_su2_.png')}}" />
 <link rel="stylesheet" href="{{asset('css/libs.min.css')}}">
 <link rel="stylesheet" href="{{asset('css/hope-ui.css?v=1.1.0')}}">
 <link rel="stylesheet" href="{{asset('css/custom.css?v=1.1.0')}}">
