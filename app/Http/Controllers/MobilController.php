@@ -76,6 +76,7 @@ class MobilController extends Controller
     public function edit(Mobil $mobil)
     {
         //
+        return view('mobil.edit')->with('mobils', $mobil);
     }
 
     /**
@@ -88,6 +89,14 @@ class MobilController extends Controller
     public function update(Request $request, Mobil $mobil)
     {
         //
+        $mobil->update([
+            'kode' => $request->kode,
+            'plat' => $request->plat,
+            'brand' => $request->brand,
+            'tahun_rilis' => $request->tahun_rilis
+        ]);
+
+        return redirect()->route('mobil.index')-> with('success', 'Data berhasil diubah');
     }
 
     /**

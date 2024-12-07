@@ -9,4 +9,6 @@ use Spatie\MediaLibrary\MediaCollections\Models\Concerns\HasUuid;
 class Mobil extends Model
 {
     use HasFactory;
+    protected $table = 'mobils';
+    protected $fillable = ['kode', 'plat', 'brand', 'tahun_rilis'];
 }

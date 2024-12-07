@@ -81,6 +81,7 @@ class SupirController extends Controller
     public function edit(Supir $supir)
     {
         //
+        return view('supir.edit')->with('supirs', $supir);
     }
 
     /**
@@ -93,6 +94,16 @@ class SupirController extends Controller
     public function update(Request $request, Supir $supir)
     {
         //
+        $supir->update([
+            'nik' => $request->nik,
+            'nama' => $request->nama,
+            'alamat' => $request->alamat,
+            'no_hp' => $request->no_hp,
+            'jk' => $request->jk
+        ]);
+
+        return redirect()->route('supir.index')-> with('success', 'Data berhasil diubah');
+
     }
 
     /**
