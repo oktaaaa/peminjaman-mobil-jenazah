@@ -24,33 +24,33 @@
                         <form action="{{route('supir.store')}}" method="POST">
                             @csrf
                             <div class="form-group">
-                                <label class="form-label" for="nama_pemohon"> NIK </label>
-                                <input type="text" class="form-control" name="nama_pemohon" placeholder="Masukkan NIK"
-                                    value="{{old('nama_pemohon')}}">
+                                <label class="form-label" for="nik"> NIK </label>
+                                <input type="text" class="form-control" name="nik" placeholder="Masukkan NIK"
+                                    value="{{old('nik')}}">
                             </div>
                             <div class="form-group">
-                                <label class="form-label" for="nama_jenazah">Nama Supir</label>
+                                <label class="form-label" for="nama">Nama Supir</label>
                                 <input type="text" class="form-control" name="nama" placeholder="Masukkan Nama"
-                                    value="{{old('nama_jenazah')}}">
+                                    value="{{old('nama')}}">
                             </div>
                             <div class="form-group">
-                                <label class="form-label" for="alamat_penjemputan">Alamat</label>
+                                <label class="form-label" for="alamat">Alamat</label>
                                 <input type="text" class="form-control" name="alamat" placeholder="Masukkan alamat"
-                                    value="{{old('alamat_penjemputan')}}">
+                                    value="{{old('alamat')}}">
                             </div>
 
                             <div class="form-group">
                                 <label class="form-label" for="tgl_lahir">Tanggal Lahir</label>
                                 <input type="date" class="form-control" name="tgl_lahir"
-                                    placeholder="Masukkan Tanggal Lahir" value="{{old('tanggal_penjemputan')}}">
+                                    placeholder="Masukkan Tanggal Lahir" value="{{old('tgl_lahir')}}">
                             </div>
                             <div class="form-group">
-                                <label for="gender">Jenis Kelamin</label>
+                                <label for="jk">Jenis Kelamin</label>
                                 <select name="jk" id="gender" class="form-control" required>
                                     <option value="">--Pilih Jenis Kelamin--</option>
                                     <option value="Laki-Laki">Laki-Laki</option>
                                     <option value="Perempuan">Perempuan</option>
-                                  
+
                                 </select>
                             </div>
                             <div class="form-group">
