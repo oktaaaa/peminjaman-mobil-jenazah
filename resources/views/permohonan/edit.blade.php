@@ -15,7 +15,7 @@
                     @endif
                     <div class="card-header d-flex justify-content-between">
                         <div class="header-title">
-                            <h4 class="card-title">Buat Permohonan</h4>
+                            <h4 class="card-title">Ubah Permohonan</h4>
                         </div>
                     </div>
                     <div class="card-body">

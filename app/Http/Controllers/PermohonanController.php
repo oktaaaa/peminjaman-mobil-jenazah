@@ -40,6 +40,7 @@ class PermohonanController extends Controller
     {
         //
         $validasi = $request->validate([
+            'nik' => 'required',
             'nama_pemohon' => 'required',
             'nama_jenazah' => 'required',
             'alamat_penjemputan' => 'required',
@@ -51,6 +52,7 @@ class PermohonanController extends Controller
         ]);
 
         $permohonan = new Permohonan();
+        $permohonan->nik = $validasi['nik'];
         $permohonan->nama_pemohon = $validasi['nama_pemohon'];
         $permohonan->nama_jenazah = $validasi['nama_jenazah'];
         $permohonan->alamat_penjemputan = $validasi['alamat_penjemputan'];
@@ -83,7 +85,7 @@ class PermohonanController extends Controller
      */
     public function edit(Permohonan $permohonan)
     {
-        //
+        return view('permohonan.edit')->with('permohonans', $permohonan);
     }
 
     /**
@@ -96,6 +98,17 @@ class PermohonanController extends Controller
     public function update(Request $request, Permohonan $permohonan)
     {
         //
+        $permohonan = $request->validate([
+            'nik' => $request->nik,
+            'nama_pemohon' => $request->nama_pemohon,
+            'nama_jenazah' => $request->nama_jenazah,
+            'alamat_penjemputan' => $request->alamat_penjemputan,
+            'alamat_tpu' => $request->alamat_tpu,
+            'tanggal_penjemputan' => $request->tanggal_penjemputan,
+            'jam_penjemputan' => $request-jam_penjemputan,
+            'no_hp' => $request->no_hp,
+            'catatan' => $request->catatan,
+        ]);
     }
 
     /**
@@ -107,5 +120,7 @@ class PermohonanController extends Controller
     public function destroy(Permohonan $permohonan)
     {
         //
+        $permohonan -> delete();
+        return back();
     }
 }

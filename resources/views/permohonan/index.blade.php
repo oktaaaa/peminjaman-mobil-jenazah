@@ -8,7 +8,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <a href="{{ route('supir.create')}}" type="button" class="btn btn-primary rounded-pill ">
+                    <a href="{{ route('permohonan.create')}}" type="button" class="btn btn-primary rounded-pill ">
                         <span class="btn-inner">
                             <svg width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path opacity="0.4" d="M16.6667 2H7.33333C3.92889 2 2 3.92889 2 7.33333V16.6667C2 20.0622 3.92 22 7.33333 22H16.6667C20.0711 22 22 20.0622 22 16.6667V7.33333C22 3.92889 20.0711 2 16.6667 2Z" fill="currentColor"></path>
@@ -21,6 +21,7 @@
                         <table id="datatable" class="table table-striped" data-toggle="data-table">
                             <thead>
                                 <tr>
+                                    <th>NIK</th>
                                     <th>Nama Pemohon</th>
                                     <th>Nama Jenazah</th>
                                     <th>Alamat Penjemputan</th>
@@ -35,6 +36,7 @@
                             <tbody>
                                 @foreach ($permohonans as $item)
                                 <tr>
+                                    <td>{{ $item['nik'] }}</td>
                                     <td>{{ $item['nama_pemohon'] }}</td>
                                     <td>{{ $item['nama_jenazah'] }}</td>
                                     <td>{{ $item['alamat_penjemputan'] }}</td>
@@ -61,7 +63,7 @@
                                                     </svg>
                                                 </span>
                                             </button>
-                                            <a class="btn btn-sm btn-icon text-primary flex-end" data-bs-toggle="tooltip" title="" href="#" data-bs-original-title="Edit User">
+                                            <a class="btn btn-sm btn-icon text-primary flex-end" data-bs-toggle="tooltip" title="" href="{{route('permohonan.edit', $item->id)}}" data-bs-original-title="Edit">
                                                 <span class="btn-inner">
                                                     <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <path d="M11.4925 2.78906H7.75349C4.67849 2.78906 2.75049 4.96606 2.75049 8.04806V16.3621C2.75049 19.4441 4.66949 21.6211 7.75349 21.6211H16.5775C19.6625 21.6211 21.5815 19.4441 21.5815 16.3621V12.3341" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
