@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Permohonan;
+use App\Models\Statuspermohonan;
 use Illuminate\Http\Request;
 
 class PermohonanController extends Controller
@@ -16,7 +17,7 @@ class PermohonanController extends Controller
     {
         //
         $permohonans = Permohonan::all();
-        return view('permohonan.index') -> with('permohonans', $permohonans);
+        return view('permohonan.index')->with('permohonans', $permohonans);
     }
 
     /**
@@ -50,7 +51,11 @@ class PermohonanController extends Controller
             'no_hp' => 'required',
             'catatan' => '',
         ]);
-
+        // dd($validasi['id']);
+        // Statuspermohonan::create([
+        //     'permohonan_id' => $validasi->id, // reference the created permohonan ID
+        //     'status' => 'tidak tersedia', // set a default status
+        // ]);
         $permohonan = new Permohonan();
         $permohonan->nik = $validasi['nik'];
         $permohonan->nama_pemohon = $validasi['nama_pemohon'];
@@ -62,8 +67,8 @@ class PermohonanController extends Controller
         $permohonan->no_hp = $validasi['no_hp'];
         $permohonan->catatan = $validasi['catatan'];
 
-        $permohonan -> save();
-        return redirect() -> route ('permohonan.index') -> with('success', 'Data berhasil disimpan');
+        $permohonan->save();
+        return redirect()->route('permohonan.index')->with('success', 'Data berhasil disimpan');
     }
 
     /**
@@ -105,7 +110,7 @@ class PermohonanController extends Controller
             'alamat_penjemputan' => $request->alamat_penjemputan,
             'alamat_tpu' => $request->alamat_tpu,
             'tanggal_penjemputan' => $request->tanggal_penjemputan,
-            'jam_penjemputan' => $request-jam_penjemputan,
+            'jam_penjemputan' => $request - jam_penjemputan,
             'no_hp' => $request->no_hp,
             'catatan' => $request->catatan,
         ]);
@@ -120,7 +125,34 @@ class PermohonanController extends Controller
     public function destroy(Permohonan $permohonan)
     {
         //
-        $permohonan -> delete();
+        $permohonan->delete();
         return back();
     }
+
+    public function report(Request $request)
+    {
+        $query = Permohonan::query();
+
+
+        if ($request->filled('start_date') && $request->filled('end_date')) {
+            $query->whereBetween('created_at', [$request->start_date, $request->end_date]);
+        }
+
+        $permohonan = $query->get();
+
+        return view('permohonan.report', ['permohonans' => $permohonan, 'startDate' => $request->start_date, 'endDate' => $request->end_date]);
+    }
+    public function print(Request $request)
+{
+    $query = Permohonan::query();
+
+    // Apply date filter if provided
+    if ($request->filled('date')) {
+        $query->whereDate('created_at', $request->date);
+    }
+
+    $permohonan = $query->get();
+
+    return view('permohonan.print', ['permohonans' => $permohonan, 'selectedDate' => $request->date]);
+}
 }

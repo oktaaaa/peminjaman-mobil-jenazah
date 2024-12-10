@@ -17,7 +17,7 @@ class CreatePermohonansTable extends Migration
 
             $table->uuid('id');
             $table->primary('id');
-
+            $table->string('nik', 50);
             $table->string('nama_pemohon', 100);
             $table->string('nama_jenazah', 100);
             $table->string('alamat_penjemputan', 200);
@@ -26,6 +26,7 @@ class CreatePermohonansTable extends Migration
             $table->time('jam_penjemputan');
             $table->string('no_hp', 15);
             $table->string('catatan', 200);
+            $table->timestamps();
         });
     }
 

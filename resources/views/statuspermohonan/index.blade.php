@@ -12,7 +12,9 @@
                         <table id="datatable" class="table table-striped" data-toggle="data-table">
                             <thead>
                                 <tr>
+                                    <th>NIK</th>
                                     <th>Nama Pemohon</th>
+                                    <th>Nama Jenazah</th>
                                     <th>Alamat Penjemputan</th>
                                     <th>Alamat TPU</th>
                                     <th>Status</th>
@@ -21,7 +23,9 @@
                             <tbody>
                                 @foreach ($statuspermohonans as $item)
                                 <tr>
+                                    <td>{{ $item->permohonan->nik }}</td>
                                     <td>{{ $item->permohonan->nama_pemohon }}</td>
+                                    <td>{{ $item->permohonan->nama_jenazah }}</td>
                                     <td>{{ $item->permohonan->alamat_penjemputan }}</td>
                                     <td>{{ $item->permohonan->alamat_tpu }}</td>
                                     <td>

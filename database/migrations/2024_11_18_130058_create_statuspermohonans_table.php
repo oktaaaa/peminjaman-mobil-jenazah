@@ -16,8 +16,11 @@ class CreateStatuspermohonansTable extends Migration
         Schema::create('statuspermohonans', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('permohonan_id')->constrained()->onDelete('cascade');
-            $table->enum('status',['Tersedia', 'Tidak tersedia']);
+            $table->unsignedBigInteger('permohonan_id'); // Ensure the column exists before the constraint
+
+            // Add the foreign key constraint
+            $table->foreign('permohonan_id')->references('id')->on('permohonans')->onDelete('cascade');
+            $table->enum('status', ['tersedia', 'tidak tersedia']);
             $table->timestamps();
         });
     }

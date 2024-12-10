@@ -15,8 +15,11 @@ class StatuspermohonanController extends Controller
     public function index()
     {
         //
-        $statuspermohonans = Statuspermohonan::with('permohonan')->get();
-        // dd($statuspermohonans);
+        // $prodi = Prodi::with('fakultas')->get();
+        // return view('prodi.index') -> with('prodi', $prodi);
+        $statuspermohonans = Statuspermohonan::with('permohonans')->get();
+
+
         return view('statuspermohonan.index', compact('statuspermohonans'));
     }
 
@@ -92,7 +95,7 @@ class StatuspermohonanController extends Controller
             'status' => 'required|string|in:tersedia,tidak tersedia',
         ]);
 
-        
+
         $statusPermohonan = StatusPermohonan::findOrFail($id);
         $statusPermohonan->status = $request->status;
         $statusPermohonan->save();

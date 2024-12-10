@@ -8,13 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Statuspermohonan extends Model
 {
     use HasFactory;
-
-    public function permohonan(){
-        return $this->belongsTo(Permohonan::class);
-    }
-
-    public function isTersedia()
+    protected $fillable = ['permohonan_id', 'status'];
+    public function permohonans()
     {
-        return $this->status === 'Tersedia';
+        return $this->belongsTo(Permohonan::class, 'permohonan_id');
     }
+
+    // public function isTersedia()
+    // {
+    //     return $this->status === 'Tersedia';
+    // }
 }

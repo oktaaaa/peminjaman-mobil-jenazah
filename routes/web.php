@@ -53,7 +53,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('users', UserController::class);
 });
 Route::put('/statuspermohonan/update/{id}', [StatusPermohonanController::class, 'updateStatus'])->name('update.status');
-
+Route::get('/permohonan-report', [PermohonanController::class, 'report'])->name('permohonan.report');
+Route::get('/permohonan-report/print', [PermohonanController::class, 'print'])->name('permohonan.print');
 //App Details Page => 'Dashboard'], function() {
 Route::group(['prefix' => 'menu-style'], function () {
     //MenuStyle Page Routs

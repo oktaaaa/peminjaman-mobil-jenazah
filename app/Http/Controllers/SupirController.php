@@ -16,7 +16,7 @@ class SupirController extends Controller
     {
         //
         $supirs = Supir::all();
-        return view('supir.index') -> with('supirs', $supirs);
+        return view('supir.index')->with('supirs', $supirs);
     }
 
     /**
@@ -56,8 +56,8 @@ class SupirController extends Controller
         $supir->no_hp = $validasi['no_hp'];
         $supir->jk = $validasi['jk'];
 
-        $supir -> save();
-        return redirect() -> route ('supir.index') -> with('success', 'Data berhasil disimpan');
+        $supir->save();
+        return redirect()->route('supir.index')->with('success', 'Data berhasil disimpan');
     }
 
 
@@ -102,7 +102,7 @@ class SupirController extends Controller
             'jk' => $request->jk
         ]);
 
-        return redirect()->route('supir.index')-> with('success', 'Data berhasil diubah');
+        return redirect()->route('supir.index')->with('success', 'Data berhasil diubah');
 
     }
 
@@ -115,7 +115,9 @@ class SupirController extends Controller
     public function destroy(Supir $supir)
     {
         //
-        $supir -> delete();
+        $supir->delete();
         return back();
     }
+
+    
 }
