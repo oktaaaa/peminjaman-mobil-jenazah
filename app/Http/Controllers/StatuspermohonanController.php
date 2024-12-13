@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mobil;
+use App\Models\Permohonan;
 use App\Models\Statuspermohonan;
 use Illuminate\Http\Request;
 
@@ -17,8 +19,8 @@ class StatuspermohonanController extends Controller
         //
         // $prodi = Prodi::with('fakultas')->get();
         // return view('prodi.index') -> with('prodi', $prodi);
-        $statuspermohonans = Statuspermohonan::with('permohonans')->get();
-
+        $statuspermohonans = Permohonan::all();
+        // dd($statuspermohonans);
 
         return view('statuspermohonan.index', compact('statuspermohonans'));
     }
@@ -31,6 +33,8 @@ class StatuspermohonanController extends Controller
     public function create()
     {
         //
+        $mobils = Mobil::where('status', 'available')->get();
+        return view('statuspermohonan.create', compact('mobils'));
     }
 
     /**

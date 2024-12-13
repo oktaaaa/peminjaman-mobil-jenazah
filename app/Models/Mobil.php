@@ -11,4 +11,8 @@ class Mobil extends Model
     use HasFactory;
     protected $table = 'mobils';
     protected $fillable = ['kode', 'plat', 'brand', 'tahun_rilis'];
+    public function statusPermohonans()
+    {
+        return $this->hasMany(StatusPermohonan::class);
+    }
 }

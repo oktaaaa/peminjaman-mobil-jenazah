@@ -13,6 +13,10 @@ class Statuspermohonan extends Model
     {
         return $this->belongsTo(Permohonan::class, 'permohonan_id');
     }
+    public function mobil()
+    {
+        return $this->belongsTo(Mobil::class);
+    }
 
     // public function isTersedia()
     // {

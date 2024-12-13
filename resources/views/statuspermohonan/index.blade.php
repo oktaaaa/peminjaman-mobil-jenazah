@@ -23,11 +23,11 @@
                             <tbody>
                                 @foreach ($statuspermohonans as $item)
                                 <tr>
-                                    <td>{{ $item->permohonan->nik }}</td>
-                                    <td>{{ $item->permohonan->nama_pemohon }}</td>
-                                    <td>{{ $item->permohonan->nama_jenazah }}</td>
-                                    <td>{{ $item->permohonan->alamat_penjemputan }}</td>
-                                    <td>{{ $item->permohonan->alamat_tpu }}</td>
+                                    <td>{{ $item->permohonans->nik }}</td>
+                                    <td>{{ $item->permohonans->nama_pemohon }}</td>
+                                    <td>{{ $item->permohonans->nama_jenazah }}</td>
+                                    <td>{{ $item->permohonans->alamat_penjemputan }}</td>
+                                    <td>{{ $item->permohonans->alamat_tpu }}</td>
                                     <td>
                                         <select name="status"
                                             class="btn status-dropdown {{ $item->status === 'tersedia' ? 'btn-success' : 'btn-danger' }}"
