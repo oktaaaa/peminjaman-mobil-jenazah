@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Mobil;
 use App\Models\Permohonan;
 use App\Models\Statuspermohonan;
+use App\Models\Supir;
 use Illuminate\Http\Request;
 
 class StatuspermohonanController extends Controller
@@ -17,13 +18,17 @@ class StatuspermohonanController extends Controller
     public function index()
     {
         //
-        // $prodi = Prodi::with('fakultas')->get();
-        // return view('prodi.index') -> with('prodi', $prodi);
-        $statuspermohonans = Permohonan::all();
-        // dd($statuspermohonans);
+        // $statuspermohonans = Permohonan::with('statuspermohonans')->get();
+        // // dd($statuspermohonans);
 
-        return view('statuspermohonan.index', compact('statuspermohonans'));
+        // return view('statuspermohonan.index', compact('statuspermohonans'));
+        $statuspermohonans = StatusPermohonan::with('permohonan', 'mobil', 'supir')->get();
+        $mobils = Mobil::where('status', 'available')->get();
+        $supirs = Supir::all();
+
+        return view('statuspermohonan.index', compact('statuspermohonans', 'mobils', 'supirs'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -34,7 +39,9 @@ class StatuspermohonanController extends Controller
     {
         //
         $mobils = Mobil::where('status', 'available')->get();
-        return view('statuspermohonan.create', compact('mobils'));
+        $supirs = Supir::all();
+        $permohonans = Permohonan::all();
+        return view('statuspermohonan.create', compact('mobils', 'supirs', 'permohonans'));
     }
 
     /**
@@ -46,6 +53,22 @@ class StatuspermohonanController extends Controller
     public function store(Request $request)
     {
         //
+        $validatedData = $request->validate([
+            'permohonan_id' => 'required|exists:permohonans,id',
+            'supir_id' => 'required|exists:supirs,id',
+            'mobil_id' => 'required|exists:mobils,id',
+            'status' => 'required|in:tersedia,tidak tersedia',
+        ]);
+
+        // Create the StatusPermohonan
+        $statusPermohonan = StatusPermohonan::create($validatedData);
+
+        // Update the mobil status to 'used'
+        $mobil = Mobil::find($request->mobil_id);
+        $mobil->status = 'used';
+        $mobil->save();
+
+        return redirect()->route('statuspermohonan.index')->with('success', 'Status Permohonan created successfully.');
     }
 
     /**
@@ -77,9 +100,27 @@ class StatuspermohonanController extends Controller
      * @param  \App\Models\Statuspermohonan  $statuspermohonan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Statuspermohonan $statuspermohonan)
+    public function update(Request $request, $id)
     {
-        //
+        // Validate incoming data
+        $request->validate([
+            'mobil_id' => 'nullable|exists:mobils,id',
+            // 'supir_id' => 'nullable|exists:supirs,id',
+            'status' => 'required|in:tersedia,tidak tersedia',
+        ]);
+
+        // Find the StatusPermohonan record
+        $statusPermohonan = StatusPermohonan::findOrFail($id);
+
+        // Update the fields
+        $statusPermohonan->mobil_id = $request->mobil_id;
+
+        $statusPermohonan->status = $request->status;
+
+        // Save the updated record
+        $statusPermohonan->save();
+
+        return redirect()->back()->with('success', 'Status, Mobil, and Supir updated successfully.');
     }
 
     /**

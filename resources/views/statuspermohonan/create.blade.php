@@ -24,47 +24,33 @@
                         <form action="{{route('supir.store')}}" method="POST">
                             @csrf
                             <div class="form-group">
-                                <label class="form-label" for="nik"> NIK </label>
-                                <input type="text" class="form-control" name="nik" placeholder="Masukkan NIK"
-                                    value="{{old('nik')}}">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" for="nama">Nama Supir</label>
-                                <input type="text" class="form-control" name="nama" placeholder="Masukkan Nama"
-                                    value="{{old('nama')}}">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" for="alamat">Alamat</label>
-                                <input type="text" class="form-control" name="alamat" placeholder="Masukkan alamat"
-                                    value="{{old('alamat')}}">
-                            </div>
-
-                            <div class="form-group">
-                                <label class="form-label" for="tgl_lahir">Tanggal Lahir</label>
-                                <input type="date" class="form-control" name="tgl_lahir"
-                                    placeholder="Masukkan Tanggal Lahir" value="{{old('tgl_lahir')}}">
-                            </div>
-                            <div class="form-group">
-                                <label for="jk">Jenis Kelamin</label>
-                                <select name="jk" id="gender" class="form-control" required>
-                                    <option value="">--Pilih Jenis Kelamin--</option>
-                                    <option value="Laki-Laki">Laki-Laki</option>
-                                    <option value="Perempuan">Perempuan</option>
-
+                                <label class="form-label" for="nik"> NIK Pemohon</label>
+                                <select name="supir_id" class="form-control">
+                                    <option value="">Pilih NIK dan Nama</option>
+                                    @foreach ($permohonans as $permohonan)
+                                    <option value="{{ $permohonan->id }}">{{ $permohonan->nik }} - {{
+                                        $permohonan->nama_pemohon }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label class="form-label" for="no_hp">No Hp</label>
-                                <input type="text" class="form-control" name="no_hp" placeholder="Masukkan No Hp"
-                                    value="{{old('no_hp')}}">
+                                <label for="supir_id">Supir</label>
+                                <select name="supir_id" class="form-control">
+                                    <option value="">Pilih Supir</option>
+                                    @foreach ($supirs as $supir)
+                                    <option value="{{ $supir->id }}">{{ $supir->nama }}</option>
+                                    @endforeach
+                                </select>
                             </div>
+
+
                             <div class="form-group">
                                 <label for="mobil_id">Mobil</label>
                                 <select class="form-control" name="mobil_id" required>
                                     <option value="">-- Pilih Mobil --</option>
                                     @foreach ($mobils as $mobil)
                                     @if ($mobil->status === 'available')
-                                    <option value="{{ $mobil->id }}">{{ $mobil->nama_mobil }}</option>
+                                    <option value="{{ $mobil->id }}">{{ $mobil->plat }}</option>
                                     @endif
                                     @endforeach
                                 </select>

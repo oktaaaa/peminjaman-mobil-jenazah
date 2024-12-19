@@ -57,6 +57,7 @@ class PermohonanController extends Controller
         //     'status' => 'tidak tersedia', // set a default status
         // ]);
         $permohonan = new Permohonan();
+
         $permohonan->nik = $validasi['nik'];
         $permohonan->nama_pemohon = $validasi['nama_pemohon'];
         $permohonan->nama_jenazah = $validasi['nama_jenazah'];
@@ -68,6 +69,11 @@ class PermohonanController extends Controller
         $permohonan->catatan = $validasi['catatan'];
 
         $permohonan->save();
+        Statuspermohonan::create([
+            'permohonan_id' => $permohonan->id,
+            'status' => 'tidak tersedia',
+            
+        ]);
         return redirect()->route('permohonan.index')->with('success', 'Data berhasil disimpan');
     }
 
