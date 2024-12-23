@@ -165,7 +165,7 @@ class HomeController extends Controller
      */
     public function uisheet(Request $request)
     {
-        return view('uisheet');
+        return view('firstpage');
     }
 
     /*

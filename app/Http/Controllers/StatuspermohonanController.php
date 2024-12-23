@@ -103,24 +103,24 @@ class StatuspermohonanController extends Controller
     public function update(Request $request, $id)
     {
         // Validate incoming data
-        $request->validate([
-            'mobil_id' => 'nullable|exists:mobils,id',
-            // 'supir_id' => 'nullable|exists:supirs,id',
-            'status' => 'required|in:tersedia,tidak tersedia',
-        ]);
+        // $request->validate([
+        //     'mobil_id' => 'nullable|exists:mobils,id',
+        //     // 'supir_id' => 'nullable|exists:supirs,id',
+        //     'status' => 'required|in:tersedia,tidak tersedia',
+        // ]);
 
-        // Find the StatusPermohonan record
-        $statusPermohonan = StatusPermohonan::findOrFail($id);
+        // // Find the StatusPermohonan record
+        // $statusPermohonan = StatusPermohonan::findOrFail($id);
 
-        // Update the fields
-        $statusPermohonan->mobil_id = $request->mobil_id;
+        // // Update the fields
+        // $statusPermohonan->mobil_id = $request->mobil_id;
 
-        $statusPermohonan->status = $request->status;
+        // $statusPermohonan->status = $request->status;
 
-        // Save the updated record
-        $statusPermohonan->save();
+        // // Save the updated record
+        // $statusPermohonan->save();
 
-        return redirect()->back()->with('success', 'Status, Mobil, and Supir updated successfully.');
+        // return redirect()->back()->with('success', 'Status, Mobil, and Supir updated successfully.');
     }
 
     /**
@@ -138,11 +138,14 @@ class StatuspermohonanController extends Controller
     {
         $request->validate([
             'status' => 'required|string|in:tersedia,tidak tersedia',
+            'mobil_id' => 'nullable|exists:mobils,id'
+
         ]);
 
 
         $statusPermohonan = StatusPermohonan::findOrFail($id);
         $statusPermohonan->status = $request->status;
+        $statusPermohonan->mobil_id = $request->mobil_id;
         $statusPermohonan->save();
 
         return response()->json(['success' => true, 'message' => 'Status updated successfully!']);
