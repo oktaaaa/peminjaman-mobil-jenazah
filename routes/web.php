@@ -3,6 +3,7 @@
 // Controllers
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MobilController;
+use App\Http\Controllers\OrangwafatController;
 use App\Http\Controllers\PermohonanController;
 use App\Http\Controllers\Security\RolePermission;
 use App\Http\Controllers\Security\RoleController;
@@ -46,6 +47,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('mobil', MobilController::class);
 
     Route::resource('supir', SupirController::class);
+    Route::resource('orangwafat', OrangwafatController::class);
     Route::resource('permohonan', PermohonanController::class);
     Route::resource('statuspermohonan', StatuspermohonanController::class);
 
@@ -54,6 +56,9 @@ Route::group(['middleware' => 'auth'], function () {
 });
 Route::put('/statuspermohonan/update/{id}', [StatusPermohonanController::class, 'updateStatus'])->name('update.status');
 Route::get('/statuspermohonan/grafik', [StatusPermohonanController::class, 'getStatusPermohonanData']);
+// In your web.php file
+Route::get('/statuspermohonan/okur', [StatusPermohonanController::class, 'selesai'])->name('statuspermohonan.okur');
+
 Route::get('/permohonan-report', [PermohonanController::class, 'report'])->name('permohonan.report');
 Route::get('/permohonan-report/print', [PermohonanController::class, 'print'])->name('permohonan.print');
 //App Details Page => 'Dashboard'], function() {

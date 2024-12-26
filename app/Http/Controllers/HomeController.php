@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Mobil;
+use App\Models\Orangwafat;
 use App\Models\Permohonan;
 use App\Models\Statuspermohonan;
 use App\Models\Supir;
@@ -30,6 +31,12 @@ class HomeController extends Controller
             ->orderBy('month')
             ->get();
 
+        $orangwafat = Orangwafat::selectRaw('MONTH(created_at) as month, COUNT(*) as total')
+            ->whereYear('created_at', $year)
+            ->groupBy('month')
+            ->orderBy('month')
+            ->get();
+
         // Prepare the data for the chart
         $chartData = [
             'labels' => $statusPermohonan->pluck('month')->map(function ($month) {
@@ -38,8 +45,15 @@ class HomeController extends Controller
             'totals' => $statusPermohonan->pluck('total')->toArray(),
         ];
 
+        $wafatData = [
+            'labels' => $orangwafat->pluck('month')->map(function ($month) {
+                return \DateTime::createFromFormat('!m', $month)->format('F');
+            })->toArray(),
+            'totals' => $orangwafat->pluck('total')->toArray(),
+        ];
+
         // Pass the data to the view
-        return view('dashboards.dashboard', compact('assets', 'mobil', 'supir', 'permohonan', 'chartData', 'year'));
+        return view('dashboards.dashboard', compact('assets', 'mobil', 'supir', 'permohonan', 'chartData', 'year', 'orangwafat', 'wafatData'));
     }
 
 

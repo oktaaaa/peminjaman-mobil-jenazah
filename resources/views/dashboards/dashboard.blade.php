@@ -95,8 +95,32 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-12 col-lg-6">
+                    <div class="card" data-aos="fade-up" data-aos-delay="1200">
+                        <div class="card-header d-flex justify-content-between flex-wrap">
+                            <div class="header-title">
+                                <h4 class="card-title">Orang Wafat per Month</h4>
+                            </div>
+                            <div class="dropdown">
+                                <a href="#" class="text-secondary dropdown-toggle" id="dropdownYearButton"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    {{ $year }}
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end" id="yearDropdown">
+                                    @for ($y = 2020; $y <= date('Y'); $y++) <li><a class="dropdown-item year-option"
+                                            href="?year={{ $y }}">{{ $y }}</a></li>
+                                        @endfor
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="wafatChart"></canvas>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+
 
 
 
@@ -117,6 +141,52 @@
                 datasets: [{
                     label: 'Total Status Permohonan',
                     data: chartData.totals,
+                    backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            // Ensure Y-axis uses multiples of 2
+                            stepSize: 2,
+                            callback: function(value) {
+                                return value % 2 === 0 ? value : ''; // Only show multiples of 2
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function (context) {
+                                return `${context.dataset.label}: ${context.raw}`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+        const wafatData = @json($wafatData);
+
+        // Initialize the chart
+        const ctx = document.getElementById('wafatChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: wafatData.labels,
+                datasets: [{
+                    label: 'Total Orang Wafat',
+                    data: wafatData.totals,
                     backgroundColor: 'rgba(75, 192, 192, 0.6)',
                     borderColor: 'rgba(75, 192, 192, 1)',
                     borderWidth: 1
