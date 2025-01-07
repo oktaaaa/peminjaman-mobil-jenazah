@@ -27,6 +27,7 @@ class OrangwafatController extends Controller
     public function create()
     {
         //
+        return view('orangwafat.create');
     }
 
     /**
@@ -38,6 +39,31 @@ class OrangwafatController extends Controller
     public function store(Request $request)
     {
         //
+        $validasi = $request->validate([
+            'nik' => 'required',
+            'nama_jenazah' => 'required',
+            'jk' => 'required',
+            'alamat_jenazah' => 'required',
+            'alamat_penjemputan' => 'required',
+            'tuj_makam' => 'required'
+        ]);
+        // dd($validasi['id']);
+        // Statuspermohonan::create([
+        //     'permohonan_id' => $validasi->id, // reference the created permohonan ID
+        //     'status' => 'tidak tersedia', // set a default status
+        // ]);
+        $orangwafat = new Orangwafat();
+
+        $orangwafat->nik = $validasi['nik'];
+        $orangwafat->nama_jenazah = $validasi['nama_jenazah'];
+        $orangwafat->jk = $validasi['jk'];
+        $orangwafat->alamat_jenazah = $validasi['alamat_jenazah'];
+        $orangwafat->alamat_penjemputan = $validasi['alamat_penjemputan'];
+        $orangwafat->tuj_makam = $validasi['tuj_makam'];
+
+        $orangwafat->save();
+
+        return redirect()->route('orangwafat.index')->with('success', 'Data berhasil disimpan');
     }
 
     /**
@@ -60,6 +86,7 @@ class OrangwafatController extends Controller
     public function edit(Orangwafat $orangwafat)
     {
         //
+        return view('orangwafat.edit')->with('orangwafats', $orangwafat);
     }
 
     /**
@@ -72,6 +99,16 @@ class OrangwafatController extends Controller
     public function update(Request $request, Orangwafat $orangwafat)
     {
         //
+        $orangwafat->update([
+            'nik' => $request->nik,
+            'nama_jenazah' => $request->nama_jenazah,
+            'jk' => $request->jk,
+            'alamat_jenazah' => $request->alamat_jenazah,
+            'alamat_penjemputan' => $request -> alamat_penjemputan,
+            'tuj_makam' => $request->tuj_makam
+        ]);
+
+        return redirect()->route('orangwafat.index')->with('success', 'Data berhasil diubah');
     }
 
     /**

@@ -21,8 +21,7 @@
                     <form action="{{route('supir.update', $supirs -> id)}}" method="POST" class="forms-sample"
                         enctype="multipart/form-data">
                         <div class="card-body">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vulputate, ex ac venenatis
-                                mollis, diam nibh finibus leo</p>
+
                             <form action="{{route('supir.store')}}" method="POST">
                                 @csrf
                                 @method('PUT')
