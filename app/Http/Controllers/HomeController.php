@@ -202,7 +202,7 @@ class HomeController extends Controller
      */
     public function uisheet(Request $request)
     {
-        return view('firstpage');
+        return view('auth.login');
     }
 
     /*

@@ -27,7 +27,7 @@
                               <div class="col-lg-12">
                                  <div class="form-group">
                                     <label for="email" class="form-label">Email</label>
-                                    <input id="email" type="email" name="email"  value="{{env('IS_DEMO') ? 'admin@example.com' : old('email')}}"   class="form-control"  placeholder="admin@example.com" required autofocus>
+                                    <input id="email" type="text" name="email"  class="form-control"  placeholder="admin@example.com" required autofocus>
                                  </div>
                               </div>
                               <div class="col-lg-12">
@@ -50,23 +50,7 @@
                            <div class="d-flex justify-content-center">
                               <button type="submit" class="btn btn-primary">{{ __('Sign In') }}</button>
                            </div>
-                           <p class="text-center my-3">or sign in with other accounts?</p>
-                           <div class="d-flex justify-content-center">
-                              <ul class="list-group list-group-horizontal list-group-flush">
-                                 <li class="list-group-item border-0 pb-0">
-                                    <a href="#"><img src="{{asset('images/brands/fb.svg')}}" alt="fb"></a>
-                                 </li>
-                                 <li class="list-group-item border-0 pb-0">
-                                    <a href="#"><img src="{{asset('images/brands/gm.svg')}}" alt="gm"></a>
-                                 </li>
-                                 <li class="list-group-item border-0 pb-0">
-                                    <a href="#"><img src="{{asset('images/brands/im.svg')}}" alt="im"></a>
-                                 </li>
-                                 <li class="list-group-item border-0 pb-0">
-                                    <a href="#"><img src="{{asset('images/brands/li.svg')}}" alt="li"></a>
-                                 </li>
-                              </ul>
-                           </div>
+
                            <p class="mt-3 text-center">
                               Don’t have an account? <a href="{{route('auth.signup')}}" class="text-underline">Click here to sign up.</a>
                            </p>
@@ -86,8 +70,8 @@
                </svg>
             </div>
          </div>
-         <div class="col-md-6 d-md-block d-none bg-primary p-0 mt-n1 vh-100 overflow-hidden">
-            <img src="{{asset('images/auth/01.png')}}" class="img-fluid gradient-main animated-scaleX" alt="images">
+         <div class="col-md-6 d-md-block d-none bg-white p-0 mt-n1 vh-100 overflow-hidden">
+            <img src="{{asset('images/mobil.jpeg')}}" alt="images" style="maxwidth:100%;height: auto;max-height: 100%;">
          </div>
       </div>
    </section>

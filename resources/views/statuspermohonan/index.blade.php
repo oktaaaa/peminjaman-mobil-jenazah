@@ -32,8 +32,7 @@
                                                 }}>Tersedia</option>
                                             <option value="tidak tersedia" {{ $item->status == 'tidak tersedia' ?
                                                 'selected' : '' }}>Tidak Tersedia</option>
-                                            <option value="selesai" {{ $item->status == 'selesai' ? 'selected' : ''
-                                                }}>Selesai</option> <!-- New option -->
+
                                         </select>
                                     </td>
 
@@ -57,8 +56,7 @@
                                     <td class="action-cell">
                                         <button class="btn btn-success ok-button d-none">OK</button>
                                         <button class="btn btn-primary edit-button">Edit</button>
-                                        <a href="{{ route('statuspermohonan.destroy', $item->id) }}"
-                                            class="btn btn-danger delete-button">Delete</a>
+                                        
                                     </td>
                                 </tr>
                                 @endforeach
