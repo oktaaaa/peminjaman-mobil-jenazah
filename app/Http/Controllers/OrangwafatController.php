@@ -45,7 +45,8 @@ class OrangwafatController extends Controller
             'jk' => 'required',
             'alamat_jenazah' => 'required',
             'alamat_penjemputan' => 'required',
-            'tuj_makam' => 'required'
+            'tuj_makam' => 'required',
+            'tgl_wafat' => 'required'
         ]);
         // dd($validasi['id']);
         // Statuspermohonan::create([
@@ -60,6 +61,7 @@ class OrangwafatController extends Controller
         $orangwafat->alamat_jenazah = $validasi['alamat_jenazah'];
         $orangwafat->alamat_penjemputan = $validasi['alamat_penjemputan'];
         $orangwafat->tuj_makam = $validasi['tuj_makam'];
+        $orangwafat->tgl_wafat = $validasi['tgl_wafat'];
 
         $orangwafat->save();
 
@@ -104,8 +106,9 @@ class OrangwafatController extends Controller
             'nama_jenazah' => $request->nama_jenazah,
             'jk' => $request->jk,
             'alamat_jenazah' => $request->alamat_jenazah,
-            'alamat_penjemputan' => $request -> alamat_penjemputan,
-            'tuj_makam' => $request->tuj_makam
+            'alamat_penjemputan' => $request->alamat_penjemputan,
+            'tuj_makam' => $request->tuj_makam,
+            'tgl_wafat' => $request->tgl_wafat
         ]);
 
         return redirect()->route('orangwafat.index')->with('success', 'Data berhasil diubah');
@@ -122,5 +125,32 @@ class OrangwafatController extends Controller
         //
         $orangwafat->delete();
         return back();
+    }
+
+    public function report(Request $request)
+    {
+        $query = Orangwafat::query();
+
+
+        if ($request->filled('start_date') && $request->filled('end_date')) {
+            $query->whereBetween('created_at', [$request->start_date, $request->end_date]);
+        }
+
+        $orangwafat = $query->get();
+
+        return view('orangwafat.report', ['orangwafats' => $orangwafat, 'startDate' => $request->start_date, 'endDate' => $request->end_date]);
+    }
+    public function print(Request $request)
+    {
+        $query = Orangwafat::query();
+
+        // Apply date filter if provided
+        if ($request->filled('date')) {
+            $query->whereDate('created_at', $request->date);
+        }
+
+        $orangwafat = $query->get();
+
+        return view('orangwafat.print', ['orangwafats' => $orangwafat, 'selectedDate' => $request->date]);
     }
 }

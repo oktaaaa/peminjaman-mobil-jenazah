@@ -32,6 +32,9 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
+        if ($request->user()->user_type === 'umum') {
+            return redirect('/umum'); // Replace with the desired route or URL for 'umum' users
+        }
 
         return redirect(RouteServiceProvider::HOME);
     }

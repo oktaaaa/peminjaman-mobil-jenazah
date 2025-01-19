@@ -64,6 +64,11 @@
                                         placeholder="Masukkan tujuan" value="{{$orangwafats->tuj_makam}}">
                                 </div>
 
+                                <div class="form-group">
+                                    <label class="form-label" for="tanggal_penjemputan">Tanggal Wafat</label>
+                                    <input type="date" class="form-control" name="tgl_wafat"
+                                        placeholder="Masukkan Tanggal Wafat" value="{{old('tgl_wafat')}}">
+                                </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                                 <button type="submit" class="btn btn-danger">Cancel</button>
                             </form>

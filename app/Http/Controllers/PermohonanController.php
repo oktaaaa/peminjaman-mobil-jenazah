@@ -72,8 +72,11 @@ class PermohonanController extends Controller
         Statuspermohonan::create([
             'permohonan_id' => $permohonan->id,
             'status' => 'tidak tersedia',
-            
+
         ]);
+        if ($request->user()->user_type === 'umum') {
+            return redirect()->route('umum.index')->with('success', 'Permohonan sudah dibuat. Terima kasih'); // Replace 'umum.dashboard' with the desired route
+        }
         return redirect()->route('permohonan.index')->with('success', 'Data berhasil disimpan');
     }
 
@@ -149,16 +152,16 @@ class PermohonanController extends Controller
         return view('permohonan.report', ['permohonans' => $permohonan, 'startDate' => $request->start_date, 'endDate' => $request->end_date]);
     }
     public function print(Request $request)
-{
-    $query = Permohonan::query();
+    {
+        $query = Permohonan::query();
 
-    // Apply date filter if provided
-    if ($request->filled('date')) {
-        $query->whereDate('created_at', $request->date);
+        // Apply date filter if provided
+        if ($request->filled('date')) {
+            $query->whereDate('created_at', $request->date);
+        }
+
+        $permohonan = $query->get();
+
+        return view('permohonan.print', ['permohonans' => $permohonan, 'selectedDate' => $request->date]);
     }
-
-    $permohonan = $query->get();
-
-    return view('permohonan.print', ['permohonans' => $permohonan, 'selectedDate' => $request->date]);
-}
 }

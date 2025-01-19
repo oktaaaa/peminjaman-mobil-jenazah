@@ -44,8 +44,8 @@
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="alamat_jenazah">Alamat Jenazah</label>
-                                <input type="text" class="form-control" name="alamat_jenazah" placeholder="Masukkan alamat"
-                                    value="{{old('alamat_jenazah')}}">
+                                <input type="text" class="form-control" name="alamat_jenazah"
+                                    placeholder="Masukkan alamat" value="{{old('alamat_jenazah')}}">
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="alamat">Alamat Penjemputan</label>
@@ -55,8 +55,14 @@
 
                             <div class="form-group">
                                 <label class="form-label" for="tuj_makam">Tujuan Pemakaman</label>
-                                <input type="text" class="form-control" name="tuj_makam"
-                                    placeholder="Masukkan tujuan" value="{{old('tuj_makam')}}">
+                                <input type="text" class="form-control" name="tuj_makam" placeholder="Masukkan tujuan"
+                                    value="{{old('tuj_makam')}}">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="tgl_wafat">Tanggal Wafat</label>
+                                <input type="date" class="form-control" name="tgl_wafat"
+                                    placeholder="Masukkan Tanggal Wafat" value="{{old('tgl_wafat')}}">
                             </div>
 
                             <button type="submit" class="btn btn-primary">Submit</button>

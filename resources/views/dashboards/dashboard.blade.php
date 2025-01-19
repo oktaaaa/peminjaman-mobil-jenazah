@@ -76,7 +76,7 @@
                     <div class="card" data-aos="fade-up" data-aos-delay="1200">
                         <div class="card-header d-flex justify-content-between flex-wrap">
                             <div class="header-title">
-                                <h4 class="card-title">Status Permohonan per Month</h4>
+                                <h4 class="card-title">Status Permohonan </h4>
                             </div>
                             <div class="dropdown">
                                 <a href="#" class="text-secondary dropdown-toggle" id="dropdownYearButton"
@@ -99,7 +99,7 @@
                     <div class="card" data-aos="fade-up" data-aos-delay="1200">
                         <div class="card-header d-flex justify-content-between flex-wrap">
                             <div class="header-title">
-                                <h4 class="card-title">Orang Wafat per Month</h4>
+                                <h4 class="card-title">Orang Wafat</h4>
                             </div>
                             <div class="dropdown">
                                 <a href="#" class="text-secondary dropdown-toggle" id="dropdownYearButton"

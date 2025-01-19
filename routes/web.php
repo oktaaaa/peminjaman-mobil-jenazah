@@ -10,6 +10,7 @@ use App\Http\Controllers\Security\RoleController;
 use App\Http\Controllers\Security\PermissionController;
 use App\Http\Controllers\StatuspermohonanController;
 use App\Http\Controllers\SupirController;
+use App\Http\Controllers\UmumController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Artisan;
 // Packages
@@ -53,6 +54,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Users Module
     Route::resource('users', UserController::class);
+
+    // umum
+    Route::resource('umum', UmumController::class);
 });
 Route::put('/statuspermohonan/update/{id}', [StatusPermohonanController::class, 'updateStatus'])->name('update.status');
 Route::get('/statuspermohonan/grafik', [StatusPermohonanController::class, 'getStatusPermohonanData']);
@@ -61,6 +65,9 @@ Route::get('/statuspermohonan/okur', [StatusPermohonanController::class, 'selesa
 
 Route::get('/permohonan-report', [PermohonanController::class, 'report'])->name('permohonan.report');
 Route::get('/permohonan-report/print', [PermohonanController::class, 'print'])->name('permohonan.print');
+
+Route::get('/orangwafat-report', [OrangwafatController::class, 'report'])->name('orangwafat.report');
+Route::get('/orangwafat-report/print', [OrangwafatController::class, 'print'])->name('orangwafat.print');
 //App Details Page => 'Dashboard'], function() {
 Route::group(['prefix' => 'menu-style'], function () {
     //MenuStyle Page Routs

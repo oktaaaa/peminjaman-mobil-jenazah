@@ -1,4 +1,6 @@
 <ul class="navbar-nav iq-main-menu" id="sidebar">
+    @auth
+    @if(Auth::check() && Auth::user()->user_type == 'Admin')
     <li class="nav-item static-item">
         <a class="nav-link static-item disabled" href="#" tabindex="-1">
             <span class="default-icon">Home</span>
@@ -116,6 +118,11 @@
             <span class="item-name">Status Permohonan</span>
         </a>
     </li>
+    @endif
+    @endauth
+
+    @auth
+    @if(Auth::check() && Auth::user()->user_type == 'pimpinan' or Auth::user()->user_type == 'Admin')
     <li class="nav-item mb-5">
         <a class="nav-link" data-bs-toggle="collapse" href="#sidebar-icons" role="button" aria-expanded="false"
             aria-controls="sidebar-icons">
@@ -129,6 +136,7 @@
                         fill="currentColor"></path>
                 </svg>
             </i>
+
             <span class="item-name">Laporan</span>
             <i class="right-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="none" viewBox="0 0 24 24"
@@ -136,6 +144,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                 </svg>
             </i>
+
         </a>
         <ul class="sub-nav collapse" id="sidebar-icons" data-bs-parent="#sidebar">
             <li class="nav-item">
@@ -151,9 +160,25 @@
                     <span class="item-name">Permohonan</span>
                 </a>
             </li>
-            
+
+            <li class="nav-item">
+                <a class="nav-link {{activeRoute(route('orangwafat.report'))}}" href="{{route('orangwafat.report')}}">
+                    <i class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
+                            <g>
+                                <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
+                            </g>
+                        </svg>
+                    </i>
+                    <i class="sidenav-mini-icon"> S </i>
+                    <span class="item-name">Orang Wafat</span>
+                </a>
+            </li>
+
         </ul>
     </li>
+    @endif
+    @endauth
 
 
     {{-- <li class="nav-item">

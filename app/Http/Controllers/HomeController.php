@@ -31,8 +31,8 @@ class HomeController extends Controller
             ->orderBy('month')
             ->get();
 
-        $orangwafat = Orangwafat::selectRaw('MONTH(created_at) as month, COUNT(*) as total')
-            ->whereYear('created_at', $year)
+        $orangwafat = Orangwafat::selectRaw('MONTH(tgl_wafat) as month, COUNT(*) as total')
+            ->whereYear('tgl_wafat', $year)
             ->groupBy('month')
             ->orderBy('month')
             ->get();

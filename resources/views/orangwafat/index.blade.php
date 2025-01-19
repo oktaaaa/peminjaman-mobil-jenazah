@@ -22,7 +22,7 @@
                             <thead>
                                 <tr>
                                     <th>NIK</th>
-                                    <th>Tanggal</th>
+                                    <th>Tanggal Wafat</th>
                                     <th>Nama Jenazah</th>
                                     <th>Jenis \n Kelamin</th>
                                     <th>Alamat Jenazah</th>
@@ -36,7 +36,7 @@
                                 @foreach ($orangwafats as $item)
                                 <tr>
                                     <td>{{ $item['nik'] }}</td>
-                                    <td>{{ $item['created_at']->format('d-M-Y') }}</td>
+                                    <td>{{ $item['tgl_wafat']}}</td>
                                     <td>{{ $item['nama_jenazah'] }}</td>
                                     <td>{{ $item['jk'] }}</td>
                                     <td>{{ $item['alamat_jenazah'] }}</td>
