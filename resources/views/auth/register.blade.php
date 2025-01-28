@@ -1,10 +1,10 @@
 <x-guest-layout>
    <section class="login-content">
-      <div class="row m-0 align-items-center bg-white vh-100">            
+      <div class="row m-0 align-items-center bg-white vh-100">
          <div class="col-md-6 d-md-block d-none bg-primary p-0 mt-n1 vh-100 overflow-hidden">
             <img src="{{asset('images/auth/05.png')}}" class="img-fluid gradient-main animated-scaleX" alt="images">
          </div>
-         <div class="col-md-6">           
+         <div class="col-md-6">
             <div class="row justify-content-center">
                <div class="col-md-10">
                   <div class="card card-transparent auth-card shadow-none d-flex justify-content-center mb-0">
@@ -29,7 +29,7 @@
                            <div class="row">
                               <div class="col-lg-6">
                                  <div class="form-group">
-                                    <label for="full-name" class="form-label">Full Name</label>
+                                    <label for="full-name" class="form-label">Nama l</label>
                                     <input id="name"  name="first_name" value="{{old('first_name')}}" class="form-control" type="text" placeholder=" "  required autofocus >
                                  </div>
                               </div>
@@ -95,9 +95,9 @@
                            </p>
                         </form>
                      </div>
-                  </div> 
+                  </div>
                </div>
-            </div>    
+            </div>
             <div class="sign-bg sign-bg-right">
                <svg width="280" height="230" viewBox="0 0 431 398" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <g opacity="0.05">
@@ -108,7 +108,7 @@
                   </g>
                </svg>
             </div>
-         </div>   
+         </div>
       </div>
    </section>
 </x-guest-layout>

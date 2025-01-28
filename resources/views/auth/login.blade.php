@@ -43,7 +43,7 @@
                                     <label class="form-check-label" for="customCheck1">Remember Me</label>
                                  </div>
                               </div>
-                              <div class="col-lg-6">
+                              <div class="col-lg-6">up
                                  <a href="{{route('auth.recoverpw')}}"  class="float-end">Forgot Password?</a>
                               </div>
                            </div>

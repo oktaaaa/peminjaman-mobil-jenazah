@@ -25,8 +25,10 @@
                             @csrf
                             <div class="form-group">
                                 <label class="form-label" for="nik"> NIK </label>
-                                <input type="text" class="form-control" name="nik" placeholder="Masukkan NIK"
-                                    value="{{old('nik')}}">
+                                <input type="number" class="form-control" name="nik" placeholder="Masukkan NIK"
+                                    value="{{old('nik')}}" onkeypress="return validasiAngka(event, 'nik-warning')">
+                                <small id="nik-warning" class="text-danger" style="display: none;">Hanya angka yang
+                                    diperbolehkan.</small>
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="nama">Nama Supir</label>
@@ -55,8 +57,10 @@
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="no_hp">No Hp</label>
-                                <input type="text" class="form-control" name="no_hp" placeholder="Masukkan No Hp"
-                                    value="{{old('no_hp')}}">
+                                <input type="number" class="form-control" name="no_hp" placeholder="Masukkan No Hp"
+                                    value="{{old('no_hp')}}" onkeypress="return validasiAngka(event, 'nohp-warning')">
+                                <small id="nohp-warning" class="text-danger" style="display: none;">Hanya angka yang
+                                    diperbolehkan.</small>
                             </div>
 
 
@@ -70,4 +74,20 @@
 
         </div>
     </div>
+
+    <script>
+        function validasiAngka(event, warningId) {
+        const warning = document.getElementById(warningId);
+        const key = event.key;
+
+
+        if (!/^[0-9]$/.test(key)) {
+            warning.style.display = 'block';
+            setTimeout(() => warning.style.display = 'none', 2000);
+            return false;
+        }
+
+        return true;
+    }
+    </script>
 </x-app-layout>
